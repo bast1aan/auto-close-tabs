@@ -55,6 +55,8 @@ async function isWhitelisted(url) {
 }
 
 async function tabCleanUp() {
+  let now = new Date();
+  let today = now.toISOString().substring(0, 10);
   const qryobj = {
     active: false,
     hidden: false,
@@ -174,7 +176,7 @@ async function tabCleanUp() {
               try {
                 if (typeof saveFolder === "string" && saveFolder !== "") {
                   let createdetails = {
-                    title: tab.title,
+                    title: today + ' ' + tab.title,
                     url: tab.url,
                     parentId: saveFolder,
                   };
